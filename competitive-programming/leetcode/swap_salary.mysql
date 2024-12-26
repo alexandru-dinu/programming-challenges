@@ -1,0 +1,5 @@
+# https://leetcode.com/problems/swap-salary
+
+update salary s
+    set s.sex = case
+        when s.sex = 'f' then 'm' else 'f' end

@@ -1,0 +1,6 @@
+# https://leetcode.com/problems/big-countries
+
+# Write your MySQL query statement below
+select w.name, w.population, w.area
+from World w
+where w.area > 3E6 or w.population > 25E6

@@ -1,0 +1,13 @@
+---
+title: ...
+url: https://adventofcode.com/.../day/...
+tags: ...
+---
+
+### Solution
+...
+
+### Usage
+```
+$ make
+```

@@ -1,0 +1,12 @@
+def fib(a=0, b=1):
+    while True:
+        yield a
+        yield from fib(b, a + b)
+
+ans = (
+    fib()
+    |> takewhile$(x -> x < 4e6)
+    |> filter$(lambda x: x % 2 == 0)
+    |> sum
+)
+print(ans)
