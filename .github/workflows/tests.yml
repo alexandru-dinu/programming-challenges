@@ -1,4 +1,4 @@
-name: Tests
+name: AoC Tests
 
 on:
   push:
@@ -14,10 +14,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: '3.11'
 
-      - name: Install python requirements
-        run: pip3 install -U -r python_requirements.txt
-
-      - name: Run available tests
-        run: make test
+      - name: Install python requirements and run available tests
+        run: cd advent-of-code && pip3 install -U -r python_requirements.txt && make test
