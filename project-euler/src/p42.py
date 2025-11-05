@@ -20,9 +20,7 @@ with open("data/words.txt") as infile:
     words = infile.readline().split(",")
 
     for word in words:
-        s = func.reduce(
-            lambda x, y: x + y, list(map(lambda w: ord(w) - 64, word[1:-1])), 0
-        )
+        s = func.reduce(lambda x, y: x + y, list(map(lambda w: ord(w) - 64, word[1:-1])), 0)
 
         if isqrt(8 * s + 1):
             count += 1

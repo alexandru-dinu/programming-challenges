@@ -1,8 +1,4 @@
 from sympy import sieve
-from itertools import permutations
-from functools import reduce
-from threading import Thread
-import queue
 
 Sieve = [2] + list(sieve.primerange(1, 1000000))
 

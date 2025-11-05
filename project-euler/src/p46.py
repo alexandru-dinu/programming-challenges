@@ -4,17 +4,17 @@
 find smallest odd o (o = 2k+1) s.t. it DNE p, s: o = p + 2s
 
 naive:
-	for each o >= 9:
-		find (p, s) s.t. p + 2s = o
-		when found, return o
+        for each o >= 9:
+                find (p, s) s.t. p + 2s = o
+                when found, return o
 
 find largest p < o
 let k = o - p
 if (k/2 is a perfect square)
-	=> (p, s)
+        => (p, s)
 else
-	find p' closest to p
-	p = p'
+        find p' closest to p
+        p = p'
 
 
 find first o s.t.
@@ -38,8 +38,9 @@ s = p1 + p2
 o = p + 2p1 + 2p2
 """
 
+from math import floor, sqrt
+
 from sympy import sieve
-from math import sqrt, floor
 
 
 def is_prime(x):

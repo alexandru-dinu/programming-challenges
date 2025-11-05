@@ -1,6 +1,6 @@
 import sys
 from functools import reduce
-from itertools import islice, accumulate, repeat, takewhile
+from itertools import accumulate, islice, repeat, takewhile
 
 
 def digits(n):
