@@ -83,8 +83,16 @@ def resolve_at_depth(code, d):
         dh = nxt.real - cur.real
         dw = nxt.imag - cur.imag
 
-        h_first = ([[1, -1][dh < 0]] * int(abs(dh))) + ([[1j, -1j][dw < 0]] * int(abs(dw))) + ["A"]
-        w_first = ([[1j, -1j][dw < 0]] * int(abs(dw))) + ([[1, -1][dh < 0]] * int(abs(dh))) + ["A"]
+        h_first = (
+            ([[1, -1][dh < 0]] * int(abs(dh)))
+            + ([[1j, -1j][dw < 0]] * int(abs(dw)))
+            + ["A"]
+        )
+        w_first = (
+            ([[1j, -1j][dw < 0]] * int(abs(dw)))
+            + ([[1, -1][dh < 0]] * int(abs(dh)))
+            + ["A"]
+        )
 
         h_ok = check_dirs(h_first, cur, pad)
         w_ok = check_dirs(w_first, cur, pad)
@@ -183,7 +191,9 @@ def top_down(code, maxdepth):
 
         return tot
 
-    return sum(min(_inner(nxt, 1) for _, nxt in seq) for seq in resolve_at_depth(code, 0))
+    return sum(
+        min(_inner(nxt, 1) for _, nxt in seq) for seq in resolve_at_depth(code, 0)
+    )
 
 
 def solve(fp: TextIO):

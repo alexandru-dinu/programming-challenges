@@ -23,7 +23,11 @@ def make_ok(xs, rules):
 
 def solve(fp: TextIO):
     rules, updates = fp.read().strip().split("\n\n")
-    rules = [(int(x[0]), int(x[1])) for line in rules.split("\n") if (x := line.strip().split("|"))]
+    rules = [
+        (int(x[0]), int(x[1]))
+        for line in rules.split("\n")
+        if (x := line.strip().split("|"))
+    ]
     updates = [list(map(int, line.split(","))) for line in updates.split("\n")]
 
     assert set(sum(updates, [])) <= set(sum(rules, ()))

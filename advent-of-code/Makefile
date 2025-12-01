@@ -22,7 +22,7 @@ SRC_PY := $(shell find ./ -name "*.py")
 format-py:
 	@uv tool run autoflake --remove-all-unused-imports -i $(SRC_PY)
 	@uv tool run isort $(SRC_PY)
-	@uv tool run black --line-length=100 $(SRC_PY)
+	@uv tool run black --line-length=88 $(SRC_PY)
 
 # find the parent dirs of the Makefiles with a `test` rule
 TEST_MK := $(shell find . -mindepth 2 -not -path '*/\.*' -name "Makefile" -exec grep -l "^test:" {} \; | xargs -n 1 dirname)

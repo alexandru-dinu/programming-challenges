@@ -82,7 +82,9 @@ def solve2(d):
         cur = d[f]
 
         try:
-            t = min(i for i, (amt, bid) in enumerate(d) if bid is None and amt >= cur[0])
+            t = min(
+                i for i, (amt, bid) in enumerate(d) if bid is None and amt >= cur[0]
+            )
             if t >= f:
                 continue
         except ValueError:

@@ -14,7 +14,11 @@ def parse(fp: TextIO):
     instr = "".join(instr.split("\n"))
     instr = [{"^": -1, "v": 1, "<": -1j, ">": 1j}[i] for i in instr]
 
-    grid = {complex(i, j): c for i, row in enumerate(grid.split("\n")) for j, c in enumerate(row)}
+    grid = {
+        complex(i, j): c
+        for i, row in enumerate(grid.split("\n"))
+        for j, c in enumerate(row)
+    }
 
     return grid, instr
 

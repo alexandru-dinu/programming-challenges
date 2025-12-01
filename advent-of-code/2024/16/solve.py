@@ -7,7 +7,9 @@ from tqdm import tqdm
 
 def parse(fp: TextIO):
     grid = {
-        complex(i, j): x for i, row in enumerate(fp.read().split("\n")) for j, x in enumerate(row)
+        complex(i, j): x
+        for i, row in enumerate(fp.read().split("\n"))
+        for j, x in enumerate(row)
     }
     src = [k for k, v in grid.items() if v == "S"]
     assert len(src) == 1

@@ -28,7 +28,9 @@ def count_quadrant(cnt, sx, ex, sy, ey):
 def parse(fp: TextIO):
     pos, vel = [], []
     for line in fp.readlines():
-        px, py, vx, vy = map(int, re.match(r"p=(-?\d+),(-?\d+) v=(-?\d+),(-?\d+)", line).groups())
+        px, py, vx, vy = map(
+            int, re.match(r"p=(-?\d+),(-?\d+) v=(-?\d+),(-?\d+)", line).groups()
+        )
         pos.append((px, py))
         vel.append((vx, vy))
 

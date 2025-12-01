@@ -54,7 +54,9 @@ def astar(obstacles, dim):
             if not in_bounds(nxt, dim) or nxt in obstacles:
                 continue
 
-            if cost[cur] + 1 < cost[nxt]:  # cost of a new node is by default INF (unvisited node)
+            if (
+                cost[cur] + 1 < cost[nxt]
+            ):  # cost of a new node is by default INF (unvisited node)
                 cost[nxt] = cost[cur] + 1
                 heapq.heappush(pq, (cost[nxt] + manh(nxt, end), nxt.real, nxt.imag))
                 parents[nxt] = cur
@@ -89,7 +91,9 @@ def dfs(obstacles, dim):
             if not in_bounds(nxt, dim) or nxt in obstacles:
                 continue
 
-            if cost[cur] + 1 < cost[nxt]:  # cost of a new node is by default INF (unvisited node)
+            if (
+                cost[cur] + 1 < cost[nxt]
+            ):  # cost of a new node is by default INF (unvisited node)
                 cost[nxt] = cost[cur] + 1
                 st.append(nxt)
                 parents[nxt] = cur
@@ -124,7 +128,9 @@ def bfs(obstacles, dim):
             if not in_bounds(nxt, dim) or nxt in obstacles:
                 continue
 
-            if cost[cur] + 1 < cost[nxt]:  # cost of a new node is by default INF (unvisited node)
+            if (
+                cost[cur] + 1 < cost[nxt]
+            ):  # cost of a new node is by default INF (unvisited node)
                 cost[nxt] = cost[cur] + 1
                 st.append(nxt)
                 parents[nxt] = cur

@@ -14,9 +14,12 @@ def iterate2(xs: list[int]):
         assert 0 <= y < 100
         w, y_ = divmod(y + x, 100)
         res += (
-            abs(w)  # number of passes through 0
-            - (y == 0 and x < 0)  # account for false pass when starting from 0 and going L
-            + (y_ == 0 and x < 0)  # account for missing pass (w == 0) when reaching 0
+            # number of passes through 0
+            abs(w)
+            # account for false pass when starting from 0 and going L
+            - (y == 0 and x < 0)
+            # account for missing pass (w == 0) when reaching 0
+            + (y_ == 0 and x < 0)
         )
         y = y_
 

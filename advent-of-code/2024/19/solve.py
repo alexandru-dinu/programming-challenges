@@ -12,7 +12,7 @@ def mycache(func):
             mem[args] = func(*args)
             # print(f'+++ caching {args=}; {mem[args]=}')
         # else:
-            # print(f'>>> reusing {args=}; {mem[args]=}')
+        # print(f'>>> reusing {args=}; {mem[args]=}')
         return mem[args]
 
     return _inner

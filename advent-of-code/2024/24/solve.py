@@ -14,9 +14,15 @@ def to_num(mem, pre):
 def draw(graph):
     random.seed(192391)
 
-    xs = sorted((node for node in graph.nodes if node.startswith("x")), key=lambda x: int(x[1:]))
-    ys = sorted((node for node in graph.nodes if node.startswith("y")), key=lambda x: int(x[1:]))
-    zs = sorted((node for node in graph.nodes if node.startswith("z")), key=lambda x: int(x[1:]))
+    xs = sorted(
+        (node for node in graph.nodes if node.startswith("x")), key=lambda x: int(x[1:])
+    )
+    ys = sorted(
+        (node for node in graph.nodes if node.startswith("y")), key=lambda x: int(x[1:])
+    )
+    zs = sorted(
+        (node for node in graph.nodes if node.startswith("z")), key=lambda x: int(x[1:])
+    )
     rest = [node for node in graph.nodes if node not in xs + ys + zs]
 
     pos = {}
@@ -77,7 +83,11 @@ def write_diagram(rules):
         nx = Node(x)
         ny = Node(y)
         nr = Node(r, shape="circle" if r.startswith("z") else "normal")
-        no = Node(f"{o}{k}", o, shape={"XOR": "rhombus", "AND": "hexagon", "OR": "trapezoid"}[o])
+        no = Node(
+            f"{o}{k}",
+            o,
+            shape={"XOR": "rhombus", "AND": "hexagon", "OR": "trapezoid"}[o],
+        )
         for n in [nx, ny, nr, no]:
             if n.id in seen:
                 continue
@@ -162,7 +172,9 @@ def solve(fp: TextIO):
 
     mem, rules = fp.read().strip().split("\n\n")
     mem = {x[0]: int(x[1]) for row in mem.split("\n") if (x := row.split(": "))}
-    rules = bidict({x[-1]: (x[0], x[1], x[2]) for row in rules.split("\n") if (x := row.split())})
+    rules = bidict(
+        {x[-1]: (x[0], x[1], x[2]) for row in rules.split("\n") if (x := row.split())}
+    )
 
     write_diagram(rules)
 
