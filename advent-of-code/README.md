@@ -1,13 +1,14 @@
 <h1 align="center"> &#127876; Advent of Code &#127876; </h1>
 
 <p align="center">
-<!-- MDUP:BEG (RUN:./.scripts/gen_badges.py --total-only) -->
-<a href="./README.md"><img src="https://img.shields.io/badge/total-277%20⭐-889900?style=for-the-badge"></img></a>
+<!-- MDUP:BEG ./.scripts/gen_badges.py --total-only -->
+<a href="./README.md"><img src="https://img.shields.io/badge/total-279%20⭐-979900?style=for-the-badge"></img></a>
 <!-- MDUP:END -->
 </p>
 
 <p align="center">
-<!-- MDUP:BEG (RUN:./.scripts/gen_badges.py --link-to-dir) -->
+<!-- MDUP:BEG ./.scripts/gen_badges.py --link-to-dir -->
+<a href="./2025"><img src="https://img.shields.io/badge/2025-2%20⭐-990c00?style=flat-square"></img></a>
 <a href="./2024"><img src="https://img.shields.io/badge/2024-50%20⭐-009900?style=flat-square"></img></a>
 <a href="./2023"><img src="https://img.shields.io/badge/2023-41%20⭐-379900?style=flat-square"></img></a>
 <a href="./2022"><img src="https://img.shields.io/badge/2022-50%20⭐-009900?style=flat-square"></img></a>

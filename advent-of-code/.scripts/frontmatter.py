@@ -32,9 +32,7 @@ def main():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "-f", "--files", type=Path, nargs="+", help="Paths to md files."
-    )
+    parser.add_argument("-f", "--files", type=Path, nargs="+", help="Paths to md files.")
     args = parser.parse_args()
 
     main()

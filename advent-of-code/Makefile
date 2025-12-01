@@ -1,12 +1,12 @@
 .PHONY: new
 new:
-	mkdir -p $(YEAR)
+	mkdir -p $(YEAR)/$(DAY)
 	cp -r .template/ $(YEAR)/$(DAY)/
 	. ./.env && ./.scripts/get_input.sh $(YEAR) $(DAY) > $(YEAR)/$(DAY)/input
 
 .PHONY: badges
 badges: README.md
-	. ./.env && mdup -i $< && sed -i '/`/d' $<
+	. ./.env && uv tool run --with requests mdup -i $< && sed -i '' -e '/`/d' $<
 
 .PHONY: clean
 clean:
@@ -20,9 +20,9 @@ clean:
 SRC_PY := $(shell find ./ -name "*.py")
 .PHONY: format-py
 format-py:
-	@autoflake --remove-all-unused-imports -i $(SRC_PY)
-	@isort $(SRC_PY)
-	@black $(SRC_PY)
+	@uv tool run autoflake --remove-all-unused-imports -i $(SRC_PY)
+	@uv tool run isort $(SRC_PY)
+	@uv tool run black --line-length=100 $(SRC_PY)
 
 # find the parent dirs of the Makefiles with a `test` rule
 TEST_MK := $(shell find . -mindepth 2 -not -path '*/\.*' -name "Makefile" -exec grep -l "^test:" {} \; | xargs -n 1 dirname)
