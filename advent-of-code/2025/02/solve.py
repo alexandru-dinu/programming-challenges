@@ -1,3 +1,4 @@
+from math import floor, log10
 from pathlib import Path
 from typing import TextIO
 
@@ -27,12 +28,15 @@ def solve(fp: TextIO):
 
     p2 = 0
     for a, b in xs:
-        for i in range(a, b + 1):
-            s = str(i)
-            n = len(s) // 2
-            for p in range(1, n + 1):
-                if all_equal(list(batched(s, p))):
-                    p2 += i
+        for cur in range(a, b + 1):
+            n = floor(log10(cur)) + 1
+            for p in range(n - 1, n // 2 - (n % 2 == 0), -1):
+                block = cur // 10**p
+                if p % (n - p) != 0:  # must reach 0
+                    continue
+                powers = list(range(p, -1, -(n - p)))
+                if cur == block * sum(10**j for j in powers):
+                    p2 += cur
                     break
 
     return p1, p2
