@@ -1,7 +1,7 @@
 ---
 title: "Day 7: Bridge Repair"
 url: https://adventofcode.com/2024/day/7
-tags: math, strings
+tags: maths, strings
 ---
 
 ### Solution

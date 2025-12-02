@@ -10,6 +10,10 @@ new year day:
 badges:
     . ./.env && uv tool run --with requests mdup -i README.md && sed -i '' -e '/`/d' README.md
 
+# List tags from README.md frontmatter
+tags:
+    @./.scripts/frontmatter.py -f $(fd -E '.*' -e md)
+
 # Remove cache directories
 clean:
     find . -name "__pycache__" -print0 | xargs -0 rm -rf
