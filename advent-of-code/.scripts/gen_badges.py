@@ -61,7 +61,8 @@ def get_year_stars(year: int) -> int:
 
 
 def get_year_badge_url(year: int, stars: int) -> str:
-    color = hsv_interp(stars / 50)
+    total_stars = 50 if year < 2025 else 24
+    color = hsv_interp(stars / total_stars)
 
     badge = f'<img src="{fmt_year_badge(year,stars, color)}"></img>'
     if args.link_to_dir:
@@ -71,11 +72,7 @@ def get_year_badge_url(year: int, stars: int) -> str:
 
 
 def get_total_badge_url(stars: int) -> str:
-    color = hsv_interp(stars / (NUM_YEARS * 50))
-
-    return (
-        f'<a href="./README.md"><img src="{fmt_total_badge(stars, color)}"></img></a>'
-    )
+    return f'<a href="./README.md"><img src="{fmt_total_badge(stars, "3e3e3e")}"></img></a>'
 
 
 def main():
