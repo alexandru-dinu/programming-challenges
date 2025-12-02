@@ -30,7 +30,7 @@ assert UID is not None
 
 AOC_URL = "https://adventofcode.com/{year}/leaderboard/private/view/{uid}.json"
 HEADERS = {
-    "User-Agent": "https://github.com/alexandru-dinu/advent-of-code/blob/main/.scripts/gen_badges.py"
+    "User-Agent": "https://github.com/alexandru-dinu/programming-challenges/blob/main/advent-of-code/.scripts/gen_badges.py"
 }
 COOKIES = {"session": SID}
 STAR = "⭐"
