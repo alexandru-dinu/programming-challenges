@@ -21,10 +21,3 @@
 <a href="./2015"><img src="https://img.shields.io/badge/2015-10%20⭐-993d00?style=flat-square"></img></a>
 <!-- MDUP:END -->
 </p>
-
-<p align="center">
-<a href="https://github.com/alexandru-dinu/advent-of-code/actions/workflows/tests.yml">
-    <img src="https://github.com/alexandru-dinu/advent-of-code/actions/workflows/tests.yml/badge.svg">
-    </img>
-</a>
-</p>
