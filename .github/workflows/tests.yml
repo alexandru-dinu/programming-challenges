@@ -13,8 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
+      - uses: extractions/setup-just@v3
         with:
           python-version: '3.11'
 
       - name: Install python requirements and run available tests
-        run: cd advent-of-code && pip3 install -U -r python_requirements.txt && make test
+        run: cd advent-of-code && pip3 install -U -r python_requirements.txt && just test

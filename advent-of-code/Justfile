@@ -1,0 +1,36 @@
+set shell := ["bash", "-c"]
+
+# Create a new day directory from template and fetch input
+new year day:
+    mkdir -p {{year}}/{{day}}
+    cp -r .template/ {{year}}/{{day}}/
+    . ./.env && ./.scripts/get_input.sh {{year}} {{day}} > {{year}}/{{day}}/input
+
+# Update badges in README.md
+badges:
+    . ./.env && uv tool run --with requests mdup -i README.md && sed -i '' -e '/`/d' README.md
+
+# Remove cache directories
+clean:
+    find . -name "__pycache__" -print0 | xargs -0 rm -rf
+    find . -name "__coconut_cache__" -print0 | xargs -0 rm -rf
+    find . -name ".hypothesis" -print0 | xargs -0 rm -rf
+    find . -name ".pytest_cache" -print0 | xargs -0 rm -rf
+    find . -name ".ipynb_checkpoints" -print0 | xargs -0 rm -rf
+    find . -name ".mypy_cache" -print0 | xargs -0 rm -rf
+
+# Format Python files
+format-py:
+    #!/usr/bin/env bash
+    src_py=$(find ./ -name "*.py")
+    uv tool run autoflake --remove-all-unused-imports -i $src_py && \
+        uv tool run isort $src_py && \
+        uv tool run black --line-length=88 $src_py
+
+# Run tests in nested Makefiles
+test:
+    #!/usr/bin/env bash
+    test_mk=$(find . -mindepth 2 -not -path '*/\.*' -name "Makefile" -exec grep -l "^test:" {} \; | xargs -n 1 dirname)
+    for mk in $test_mk; do
+        make -C $mk test || exit 1
+    done
