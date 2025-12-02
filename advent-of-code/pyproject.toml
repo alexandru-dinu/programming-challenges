@@ -1,0 +1,28 @@
+[project]
+name = "advent-of-code"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "PyYAML",
+    "Requests",
+    "bidict",
+    "coconut",
+    "hypothesis",
+    "lark",
+    "matplotlib",
+    "networkx",
+    "numpy",
+    "pandas",
+    "pytest",
+    "rich",
+    "scikit_learn",
+    "sympy",
+    "toolz",
+    "tqdm",
+    "z3_solver",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.1",
+]

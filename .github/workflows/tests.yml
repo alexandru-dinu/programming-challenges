@@ -12,10 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+
       - uses: extractions/setup-just@v3
-        with:
-          python-version: '3.11'
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
 
       - name: Install python requirements and run available tests
-        run: cd advent-of-code && pip3 install -U -r python_requirements.txt && just test
+        run: cd advent-of-code && uv sync --locked --all-extras --dev && source .venv/bin/activate && just test
