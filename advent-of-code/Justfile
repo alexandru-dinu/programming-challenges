@@ -22,7 +22,7 @@ clean:
 # Format Python files
 format-py:
     #!/usr/bin/env bash
-    src_py=$(find ./ -name "*.py")
+    src_py=$(fd -E '.*' -e py)
     uv tool run autoflake --remove-all-unused-imports -i $src_py && \
         uv tool run isort $src_py && \
         uv tool run black --line-length=88 $src_py
