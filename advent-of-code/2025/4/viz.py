@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.animation import FuncAnimation
-from matplotlib.colors import Normalize
+from matplotlib.colors import ListedColormap, Normalize
 from scipy.signal import convolve2d
 
 
@@ -35,14 +35,16 @@ def main():
 
         hist += [(mat.copy(), p2)]
 
-    fig, ax = plt.subplots()
+    colors = ["#00203F", "#ADEFD1"]
+    fig, ax = plt.subplots(facecolor=colors[0])
+    plt.axis("off")
     norm = Normalize(vmin=0, vmax=1)
-    im = ax.imshow(hist[0][0], cmap="hot", norm=norm)
+    im = ax.imshow(hist[0][0], cmap=ListedColormap(colors), norm=norm)
 
     def update(frame):
         m, r = hist[frame]
         im.set_array(m)
-        ax.set_title(f"Iteration: {frame}. Removed: {r:,d}")
+        ax.set_title(f"Iteration: {frame}. Removed: {r:,d}", color=colors[1])
         return [im]
 
     ani = FuncAnimation(fig, update, frames=len(hist), interval=100, blit=True)

@@ -7,7 +7,3 @@ solve: solve.py
 .PHONY: test
 test: solve.py
 	pytest -vv $^
-
-.PHONY: viz
-viz: viz.py
-	cat $(INPUT) | python3 $^
