@@ -2,9 +2,36 @@ set shell := ["bash", "-c"]
 
 # Create a new day directory from template and fetch input
 new year day:
-    mkdir -p {{year}}/{{day}}
-    cp -r .template/ {{year}}/{{day}}/
-    . ./.env && ./.scripts/get_input.sh {{year}} {{day}} > {{year}}/{{day}}/input
+    #!/usr/bin/env bash
+    set -e
+
+    TARGET="{{year}}/{{day}}"
+    mkdir -p "$TARGET"
+    cp -r .template/ "$TARGET/"
+
+    . .env && ./.scripts/get_input.sh {{year}} {{day}} > "$TARGET/input"
+
+    TITLE=$(curl -s "https://adventofcode.com/{{year}}/day/{{day}}" \
+            | rg -e '--- Day \d+:\s*(.*?)\s*---' -o \
+            | tr -d '-' \
+            | xargs)
+    echo "--- $TITLE ---"
+
+    cat <<EOF > "$TARGET/README.md"
+    ---
+    title: "$TITLE"
+    url: https://adventofcode.com/{{year}}/day/{{day}}
+    tags: ...
+    ---
+
+    # Solution
+    ...
+
+    # Usage
+    \`\`\`
+    $ make
+    \`\`\`
+    EOF
 
 # Update badges in README.md
 badges:
