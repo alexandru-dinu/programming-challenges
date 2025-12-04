@@ -11,3 +11,7 @@ Neighbours in a 2d grid; using complex numbers and sets for storing coordinates.
 ```
 $ make
 ```
+
+### Viz
+
+![Progress GIF](./progress.gif)
