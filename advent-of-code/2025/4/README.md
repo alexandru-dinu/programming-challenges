@@ -16,4 +16,6 @@ $ make
 
 ### Viz
 
-![Progress GIF](./progress.gif)
+<div align="center">
+  <img src="./progress.gif" alt="Progress GIF" width="75%"/>
+</div>

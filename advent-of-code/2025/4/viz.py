@@ -36,7 +36,7 @@ def main():
         hist += [(mat.copy(), p2)]
 
     colors = ["#00203F", "#ADEFD1"]
-    fig, ax = plt.subplots(facecolor=colors[0])
+    fig, ax = plt.subplots(facecolor=colors[0], figsize=(5, 5))
     plt.axis("off")
     norm = Normalize(vmin=0, vmax=1)
     im = ax.imshow(hist[0][0], cmap=ListedColormap(colors), norm=norm)
@@ -44,7 +44,13 @@ def main():
     def update(frame):
         m, r = hist[frame]
         im.set_array(m)
-        ax.set_title(f"Iteration: {frame}. Removed: {r:,d}", color=colors[1])
+        ax.set_title(
+            f"iteration: {frame} | removed: {r:,d}",
+            color=colors[1],
+            fontsize=6,
+            fontfamily="monospace",
+            y=-0.1,
+        )
         return [im]
 
     ani = FuncAnimation(fig, update, frames=len(hist), interval=100, blit=True)
