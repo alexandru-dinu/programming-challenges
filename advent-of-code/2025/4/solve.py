@@ -12,7 +12,10 @@ def nei(z):
 
 def solve(fp: TextIO):
     grid = {
-        complex(j, i) for i, row in enumerate(fp.readlines()) for j, z in enumerate(row) if z == "@"
+        complex(j, i)
+        for i, row in enumerate(fp.readlines())
+        for j, z in enumerate(row)
+        if z == "@"
     }
 
     p1 = sum(1 for z in grid if len(nei(z) & grid) < 4)

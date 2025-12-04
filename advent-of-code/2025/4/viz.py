@@ -8,7 +8,12 @@ from scipy.signal import convolve2d
 def main():
     with open("input") as fp:
         coords = np.array(
-            [[i, j] for i, row in enumerate(fp.readlines()) for j, z in enumerate(row) if z == "@"]
+            [
+                [i, j]
+                for i, row in enumerate(fp.readlines())
+                for j, z in enumerate(row)
+                if z == "@"
+            ]
         )
 
     rows = coords[:, 0].max() + 1
