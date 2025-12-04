@@ -7,6 +7,8 @@ tags: 2d
 ### Solution
 Neighbours in a 2d grid; using complex numbers and sets for storing coordinates.
 
+Upsolve using 2d convolutions for viz.
+
 ### Usage
 ```
 $ make
