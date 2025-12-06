@@ -1,3 +1,4 @@
+from itertools import groupby
 from pathlib import Path
 from typing import TextIO
 
@@ -14,18 +15,35 @@ def solve(fp: TextIO):
     xss = np.array([xs.strip().split() for xs in nums]).astype(int)
     p1 = sum(OPS[op](xss[:, i]) for i, op in enumerate(ops))
 
-    p2 = 0
-    xs = []
-    # append a dummy space so we can treat first col w/o duplicating code
-    nums = [" " + x for x in nums]
-    ops = reversed(ops)
-    for i in reversed(range(len(nums[0]))):
-        x = "".join(row[i] for row in nums if not row[i].isspace())
-        if not x:
-            p2 += OPS[next(ops)](xs).item()
-            xs = []
-        else:
-            xs.append(int(x))
+    # p2 = 0
+    # xs = []
+    # # append a dummy space so we can treat first col w/o duplicating code
+    # nums = [" " + x for x in nums]
+    # ops = reversed(ops)
+    # for i in reversed(range(len(nums[0]))):
+    #     x = "".join(row[i] for row in nums if not row[i].isspace())
+    #     if not x:
+    #         p2 += OPS[next(ops)](xs).item()
+    #         xs = []
+    #     else:
+    #         xs.append(int(x))
+
+    # upsolve
+    p2 = sum(
+        OPS[op](xs)
+        for op, xs in zip(
+            ops,
+            [
+                list(g)
+                for f, g in groupby(
+                    [int("".join(x).strip() or "0") for x in zip(*nums)],
+                    lambda k: k != 0,
+                )
+                if f
+            ],
+            strict=True,
+        )
+    )
 
     return p1, p2
 
