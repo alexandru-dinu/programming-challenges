@@ -24,7 +24,7 @@ dependencies = [
     "sympy",
     "toolz",
     "tqdm",
-    "z3_solver",
+    "z3-solver",
 ]
 
 [dependency-groups]
