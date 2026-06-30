@@ -42,7 +42,10 @@ M = np.array(
 ).reshape(5, 5)
 
 M = np.array(
-    [list(map(int, r.strip().split(","))) for r in open("data/p081_matrix.txt").readlines()]
+    [
+        list(map(int, r.strip().split(",")))
+        for r in open("data/p081_matrix.txt").readlines()
+    ]
 )
 
 n = len(M)

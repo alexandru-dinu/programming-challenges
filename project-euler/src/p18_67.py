@@ -168,7 +168,8 @@ solve(T)
 r = 100
 T = np.zeros((r, r), dtype=np.uint32)
 T[np.tril_indices(r)] = [
-    int(x) for x in re.sub(r"[^0-9]", " ", open("data/p067_triangle.txt").read()).split()
+    int(x)
+    for x in re.sub(r"[^0-9]", " ", open("data/p067_triangle.txt").read()).split()
 ]
 
 solve(T)

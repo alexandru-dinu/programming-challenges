@@ -13,7 +13,12 @@ class divide:
         nr_ = "" if not self.nr else "".join(map(str, self.nr))
         r_ = "" if not self.r else "".join(map(str, self.r))
 
-        cases = {(1, 1): f".{nr_}({r_})", (1, 0): f".{nr_}", (0, 1): f".({r_})", (0, 0): f""}
+        cases = {
+            (1, 1): f".{nr_}({r_})",
+            (1, 0): f".{nr_}",
+            (0, 1): f".({r_})",
+            (0, 0): f"",
+        }
 
         lhs = f"{self.x}/{self.y}"
         rhs = f'{self.i}{cases[nr_ != "", r_ != ""]}'

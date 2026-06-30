@@ -1,22 +1,8 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 import matplotlib.pyplot as plt
 import numpy as np
 
-get_ipython().run_line_magic("matplotlib", "inline")
-get_ipython().run_line_magic("config", "InlineBackend.figure_format = 'retina'")
-sns.set()
-
-
-# In[ ]:
-
-
 """
-What is the greatest product of four adjacent numbers 
+What is the greatest product of four adjacent numbers
 in the same direction (up, down, left, right, or diagonally)?
 """
 
@@ -430,18 +416,13 @@ grid = np.array(
 grid_ = grid / grid.max()
 
 
-# In[ ]:
-
-
 plt.figure(figsize=2 * (11,))
 plt.imshow(grid, cmap="cool")
 plt.grid(False)
 plt.colorbar()
 plt.xticks(np.arange(20))
 plt.yticks(np.arange(20))
-
-
-# In[ ]:
+plt.show()
 
 
 maxp = -1
@@ -450,13 +431,13 @@ for i in range(N, 20 - N):
     for j in range(N, 20 - N):
         maxp = max(
             maxp,
-            np.product(grid[i : i - N, j]),
-            np.product(grid[i : i + N, j]),
-            np.product(grid[i, j : j - N]),
-            np.product(grid[i, j : j + N]),
-            np.product([grid[i - k, j - k] for k in range(N)]),
-            np.product([grid[i - k, j + k] for k in range(N)]),
-            np.product([grid[i + k, j + k] for k in range(N)]),
-            np.product([grid[i + k, j - k] for k in range(N)]),
+            np.prod(grid[i : i - N, j]),
+            np.prod(grid[i : i + N, j]),
+            np.prod(grid[i, j : j - N]),
+            np.prod(grid[i, j : j + N]),
+            np.prod([grid[i - k, j - k] for k in range(N)]),
+            np.prod([grid[i - k, j + k] for k in range(N)]),
+            np.prod([grid[i + k, j + k] for k in range(N)]),
+            np.prod([grid[i + k, j - k] for k in range(N)]),
         )
-maxp
+print(maxp)
